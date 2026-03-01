@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
 import { Download, ArrowRight, Code2, Cpu, Database } from 'lucide-react';
 import { Link } from 'react-scroll';
@@ -30,7 +30,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" ref={heroRef} className="relative min-h-[90vh] flex flex-col md:flex-row items-center justify-between pt-24 overflow-visible px-4">
+    <section id="hero" ref={heroRef} className="relative min-h-[90vh] flex flex-col md:flex-row items-center justify-between pt-12 overflow-visible px-4">
       {/* Background Animated Gradient Waves handled in main CSS blobs, but this is a specific overlay */}
       <motion.div style={{ y }} className="absolute inset-0 z-[-1] pointer-events-none">
          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]" />
@@ -109,7 +109,7 @@ const Hero = () => {
 
           <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8 z-10">
             <motion.img 
-              src="https://image.pollinations.ai/prompt/attractive%20anime%20boy%20programmer%20neon%20cyberpunk%20aesthetic%20dark%20background%20highly%20detailed%20masterpiece?width=600&height=600&nologo=true"
+              src="/anime_boy_dev.png"
               alt="Anime Boy Developer"
               className="w-full h-full object-cover rounded-full shadow-[0_0_40px_rgba(34,211,238,0.4)] border-4 border-cyan-500/30"
               animate={{ y: [-10, 10, -10] }}

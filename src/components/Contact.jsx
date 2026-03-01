@@ -64,7 +64,7 @@ const Contact = () => {
               </div>
             </a>
             
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 text-slate-300 hover:text-blue-500 group transition-all duration-300 w-fit">
+            <a href="https://www.linkedin.com/in/jatin-kumar-bb958a294/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 text-slate-300 hover:text-blue-500 group transition-all duration-300 w-fit">
               <div className="w-14 h-14 bg-slate-800/80 rounded-2xl flex items-center justify-center group-hover:bg-blue-500/10 group-hover:border-blue-400/30 border border-transparent shadow-lg transition-all duration-300 group-hover:scale-110">
                 <Linkedin size={24} className="group-hover:drop-shadow-[0_0_10px_rgba(59,130,246,0.8)]" />
               </div>
@@ -74,7 +74,7 @@ const Contact = () => {
               </div>
             </a>
             
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 text-slate-300 hover:text-white group transition-all duration-300 w-fit">
+            <a href="https://github.com/jatin0021" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 text-slate-300 hover:text-white group transition-all duration-300 w-fit">
               <div className="w-14 h-14 bg-slate-800/80 rounded-2xl flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/30 border border-transparent shadow-lg transition-all duration-300 group-hover:scale-110">
                 <Github size={24} className="group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
               </div>
