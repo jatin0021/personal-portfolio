@@ -107,35 +107,14 @@ const Hero = () => {
             <Cpu size={28} />
           </div>
 
-          <div className="absolute inset-0 flex items-center justify-center p-8 z-10">
-            <svg viewBox="0 0 800 600" className="w-full h-full drop-shadow-2xl text-blue-400 transform translate-z-0" fill="currentColor">
-               <path d="M400,100 C500,100 600,200 600,300 C600,450 450,550 400,550 C300,550 200,450 200,300 C200,200 300,100 400,100 Z" opacity="0.05" />
-               <rect x="230" y="180" width="340" height="230" rx="15" fill="#0f172a" stroke="#1e293b" strokeWidth="4" />
-               <rect x="245" y="195" width="310" height="180" rx="8" fill="#020617"/>
-               
-               {/* IDE Window Controls */}
-               <circle cx="260" cy="208" r="4" fill="#ef4444"/>
-               <circle cx="275" cy="208" r="4" fill="#eab308"/>
-               <circle cx="290" cy="208" r="4" fill="#22c55e"/>
-
-               {/* Base & Stand */}
-               <path d="M260,410 L540,410 L560,450 L240,450 Z" fill="#1e293b" stroke="#334155" strokeWidth="2"/>
-               
-               {/* Animated Code lines */}
-               <g className="animate-pulse">
-                <rect x="260" y="230" width="120" height="6" rx="3" fill="#3b82f6"/>
-                <rect x="260" y="250" width="180" height="6" rx="3" fill="#8b5cf6"/>
-                <rect x="280" y="270" width="220" height="6" rx="3" fill="#22d3ee"/>
-                <rect x="260" y="290" width="150" height="6" rx="3" fill="#ef4444"/>
-                <rect x="280" y="310" width="100" height="6" rx="3" fill="#a855f7"/>
-                <rect x="280" y="330" width="160" height="6" rx="3" fill="#3b82f6"/>
-               </g>
-               
-               {/* Abstract floating elements */}
-               <circle cx="150" cy="150" r="15" fill="#22d3ee" opacity="0.6" className="animate-bounce" style={{animationDuration: '3s'}}/>
-               <rect x="650" y="350" width="25" height="25" rx="6" fill="#8b5cf6" opacity="0.6" className="animate-spin" style={{animationDuration: '6s'}}/>
-               <polygon points="580,120 620,180 540,180" fill="#3b82f6" opacity="0.5" className="animate-pulse"/>
-            </svg>
+          <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8 z-10">
+            <motion.img 
+              src="https://image.pollinations.ai/prompt/attractive%20anime%20boy%20programmer%20neon%20cyberpunk%20aesthetic%20dark%20background%20highly%20detailed%20masterpiece?width=600&height=600&nologo=true"
+              alt="Anime Boy Developer"
+              className="w-full h-full object-cover rounded-full shadow-[0_0_40px_rgba(34,211,238,0.4)] border-4 border-cyan-500/30"
+              animate={{ y: [-10, 10, -10] }}
+              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+            />
           </div>
         </div>
       </motion.div>

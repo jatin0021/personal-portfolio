@@ -4,46 +4,71 @@ import { Briefcase } from 'lucide-react';
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-20 border-t border-white/5">
+    <section id="experience" className="py-24 border-t border-white/5 relative z-10 w-full overflow-hidden">
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 font-inter text-slate-100">Work <span className="text-blue-500">Experience</span></h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-12"></div>
+        <span className="text-purple-400 font-semibold tracking-widest uppercase text-sm mb-2 block font-poppins">Career Journey</span>
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 font-poppins text-slate-100">Work <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 drop-shadow-md">Experience</span></h2>
+        <div className="w-24 h-1.5 bg-gradient-to-r from-purple-500 to-cyan-400 rounded-full mb-16 shadow-[0_0_15px_rgba(168,85,247,0.5)]"></div>
       </motion.div>
 
-      <div className="relative border-l-2 border-slate-800 ml-3 md:ml-6 pl-8 py-4">
+      <div className="relative border-l-2 border-slate-800 ml-5 md:ml-8 pl-10 py-4">
         <motion.div
            initial={{ opacity: 0, x: -50 }}
            whileInView={{ opacity: 1, x: 0 }}
-           viewport={{ once: true }}
-           transition={{ duration: 0.6 }}
+           viewport={{ once: true, margin: "-100px" }}
+           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
            className="relative"
         >
-          {/* Timeline Dot */}
-          <div className="absolute -left-[43px] top-1 w-10 h-10 bg-slate-900 border-2 border-blue-500 rounded-full flex items-center justify-center text-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-            <Briefcase size={18} />
-          </div>
+          {/* Timeline Dot Glowing */}
+          <motion.div 
+            className="absolute -left-[63px] top-1 w-14 h-14 bg-[#0a0f1c] border-2 border-cyan-400 rounded-full flex items-center justify-center text-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.6)] z-20"
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
+          >
+            <Briefcase size={22} className="drop-shadow-lg" />
+          </motion.div>
+          
+          <div className="absolute -left-[63px] top-1 w-14 h-14 rounded-full bg-cyan-400/20 blur-xl animate-pulse z-10"></div>
 
-          <div className="glass-card p-6 md:p-8 hover:border-blue-500/30 transition-colors">
-            <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
+          <div className="glass-card p-8 md:p-10 rounded-3xl group cursor-pointer hover:border-cyan-400/30 hover:shadow-cyan-400/10 transition-all duration-500 overflow-hidden relative">
+            {/* Hover Blob Background */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-400/5 rounded-full blur-3xl -mr-32 -mt-32 group-hover:bg-cyan-400/10 transition-colors duration-700 pointer-events-none"></div>
+
+            <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-6 gap-4 relative z-10">
               <div>
-                <h3 className="text-2xl font-bold text-slate-100">Frontend Developer</h3>
-                <h4 className="text-lg text-blue-400 font-medium">AAYAAMX Technologies Pvt Ltd</h4>
+                <h3 className="text-3xl font-bold text-slate-100 font-poppins mb-1">Frontend Developer</h3>
+                <h4 className="text-xl text-purple-400 font-medium font-poppins drop-shadow-sm">AAYAAMX Technologies Pvt Ltd</h4>
               </div>
-              <span className="px-4 py-1.5 bg-blue-500/10 text-blue-400 text-sm font-semibold rounded-full border border-blue-500/20 whitespace-nowrap">
+              <span className="px-5 py-2 bg-purple-500/10 text-cyan-300 text-sm font-semibold rounded-full border border-purple-500/20 whitespace-nowrap shadow-[0_0_10px_rgba(168,85,247,0.2)]">
                 Jan 2025 – Present
               </span>
             </div>
             
-            <ul className="list-disc list-inside space-y-3 text-slate-300 mt-6 leading-relaxed">
-              <li>Developing <strong className="text-slate-200 font-medium">reusable components</strong> to standardise and accelerate the UI development process.</li>
-              <li>Architecting a <strong className="text-slate-200 font-medium">scalable UI</strong> architecture utilizing best practices in React.js and modern state management.</li>
-              <li>Ensuring <strong className="text-slate-200 font-medium">cross-browser compatibility</strong> by employing meticulous mobile-first styling logic via Tailwind CSS.</li>
-              <li>Driving significant <strong className="text-slate-200 font-medium">performance improvements</strong> through rigorous profiling, code-splitting, and lazy loading strategies.</li>
+            <ul className="space-y-4 text-slate-300 mt-8 leading-relaxed font-inter relative z-10">
+              {[
+                { bold: "Reusable Components", text: "to standardise and accelerate the UI development process." },
+                { bold: "Scalable UI Architecture", text: "utilizing best practices in React.js and modern state management flows." },
+                { bold: "Cross-browser Compatibility", text: "employing meticulous mobile-first styling logic via Tailwind CSS." },
+                { bold: "Performance Optimization", text: "driving significant improvements through rigorous profiling and splitting." }
+              ].map((item, idx) => (
+                <motion.li 
+                  key={idx}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 + (idx * 0.1) }}
+                  className="flex items-start gap-4"
+                >
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)] shrink-0"></span>
+                  <p><strong className="text-slate-100 font-semibold">{item.bold}</strong> {item.text}</p>
+                </motion.li>
+              ))}
             </ul>
           </div>
         </motion.div>
