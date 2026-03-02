@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+    <linearGradient id="text-grad" x1="0" y1="0" x2="64" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <!-- Background rounded square -->
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <!-- Subtle inner glow -->
+  <rect width="64" height="64" rx="14" fill="url(#text-grad)" opacity="0.08"/>
+  <!-- Border ring -->
+  <rect x="1.5" y="1.5" width="61" height="61" rx="13" stroke="url(#text-grad)" stroke-width="1.5" stroke-opacity="0.5"/>
+  <!-- JK Text -->
+  <text x="32" y="43" text-anchor="middle" font-family="'Poppins', 'Segoe UI', sans-serif" font-weight="800" font-size="26" fill="url(#text-grad)" letter-spacing="-1">JK</text>
+  <!-- Dot accent -->
+  <circle cx="50" cy="16" r="4" fill="#22d3ee" opacity="0.9"/>
+</svg>
