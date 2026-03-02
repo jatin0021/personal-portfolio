@@ -54,7 +54,11 @@ const Contact = () => {
           </p>
           
           <div className="space-y-6">
-            <a href="mailto:jatinchauhan457@gmail.com" className="flex items-center gap-6 text-slate-300 hover:text-cyan-400 group transition-all duration-300 w-fit">
+            <a
+              href="mailto:jatinchauhan457@gmail.com"
+              onClick={(e) => { e.preventDefault(); window.location.href = 'mailto:jatinchauhan457@gmail.com'; }}
+              className="flex items-center gap-6 text-slate-300 hover:text-cyan-400 group transition-all duration-300 w-fit cursor-pointer"
+            >
               <div className="w-14 h-14 bg-slate-800/80 rounded-2xl flex items-center justify-center group-hover:bg-cyan-500/10 group-hover:border-cyan-400/30 border border-transparent shadow-lg transition-all duration-300 group-hover:scale-110">
                 <Mail size={24} className="group-hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
               </div>
