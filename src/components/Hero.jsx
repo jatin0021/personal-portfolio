@@ -30,7 +30,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" ref={heroRef} className="relative min-h-[90vh] flex flex-col md:flex-row items-center justify-between pt-12 overflow-visible px-4">
+    <section id="hero" ref={heroRef} className="relative min-h-[90vh] flex flex-col md:flex-row items-center justify-between pt-20 overflow-visible px-4">
       {/* Background Animated Gradient Waves handled in main CSS blobs, but this is a specific overlay */}
       <motion.div style={{ y }} className="absolute inset-0 z-[-1] pointer-events-none">
          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]" />
@@ -58,7 +58,7 @@ const Hero = () => {
           <TypeAnimation
             sequence={[
               'Frontend Developer', 1500,
-              'React.js Specialist', 1500,
+              'React.js Developer', 1500,
               'API Integration Expert', 1500,
               'UI/UX Enthusiast', 1500
             ]}
@@ -74,9 +74,9 @@ const Hero = () => {
         </p>
 
         <div className="flex flex-wrap gap-5 pt-6">
-          <Link to="projects" smooth={true} offset={-80} className="w-full sm:w-auto">
+          <Link to="contact" smooth={true} offset={-80} className="w-full sm:w-auto">
             <button className="magnetic-btn w-full px-8 py-3.5 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold rounded-xl flex items-center justify-center gap-3 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:scale-105 duration-300 group ring-1 ring-cyan-400/50">
-              View Projects 
+              Hire Me 
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </Link>

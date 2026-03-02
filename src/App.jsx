@@ -57,7 +57,7 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="max-w-7xl mx-auto px-6 pt-24 pb-12 overflow-hidden relative z-10"
+            className="max-w-7xl mx-auto px-6 pt-12 pb-12 overflow-hidden relative z-10"
           >
             <Hero />
             <About />

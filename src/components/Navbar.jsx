@@ -26,7 +26,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
         
         {/* Logo */}
-        <Link to="hero" smooth={true} className="text-3xl font-extrabold cursor-pointer group flex items-center gap-1">
+        <Link to="hero" smooth={true} duration={400} className="text-3xl font-extrabold cursor-pointer group flex items-center gap-1">
           <span className="text-slate-100 font-poppins tracking-tighter group-hover:text-blue-400 transition-colors duration-300">J<span className="text-cyan-400">K</span></span>
           <motion.div 
             animate={{ rotate: 360 }}
@@ -43,6 +43,7 @@ const Navbar = () => {
               to={item.to}
               spy={true}
               smooth={true}
+              duration={400}
               offset={-80}
               className="text-slate-400 hover:text-white cursor-pointer transition-all duration-300 relative group text-sm font-semibold tracking-wide font-inter"
               activeClass="!text-cyan-400 font-bold"
@@ -83,6 +84,7 @@ const Navbar = () => {
                   to={item.to}
                   spy={true}
                   smooth={true}
+                  duration={400}
                   offset={-70}
                   className="text-slate-300 hover:text-cyan-400 cursor-pointer text-xl font-poppins font-semibold active:scale-95 transition-transform tracking-wide"
                   activeClass="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400"
