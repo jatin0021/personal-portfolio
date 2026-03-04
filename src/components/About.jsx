@@ -6,82 +6,137 @@ import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 
 const About = () => {
-  const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true });
+  const { ref, inView } = useInView({ threshold: 0.15, triggerOnce: true });
 
   const highlights = [
-    { icon: <Code size={24} />, title: "Component Architecture", desc: "Building scalable, reusable React systems." },
-    { icon: <Server size={24} />, title: "API Integration", desc: "Seamless REST APIs & Axios standard flows." },
-    { icon: <Layout size={24} />, title: "Responsive UI", desc: "Mobile-first SaaS designs with Tailwind." },
-    { icon: <Zap size={24} />, title: "Optimization", desc: "Tuning performance & 60fps animations." },
+    { 
+      icon: <Code size={22} />, 
+      title: "Component Architecture", 
+      desc: "Building scalable, reusable React systems with clean DRY principles.",
+      color: "cyan",
+      bg: "bg-cyan-500/10", text: "text-cyan-400", border: "border-cyan-500/20", glow: "rgba(34,211,238,0.3)"
+    },
+    { 
+      icon: <Server size={22} />, 
+      title: "API Integration", 
+      desc: "Seamless REST APIs & Axios standard flows with clean error handling.",
+      color: "blue",
+      bg: "bg-blue-500/10", text: "text-blue-400", border: "border-blue-500/20", glow: "rgba(59,130,246,0.3)"
+    },
+    { 
+      icon: <Layout size={22} />, 
+      title: "Responsive UI", 
+      desc: "Mobile-first SaaS designs with Tailwind, pixel-perfect across all screens.",
+      color: "purple",
+      bg: "bg-purple-500/10", text: "text-purple-400", border: "border-purple-500/20", glow: "rgba(168,85,247,0.3)"
+    },
+    { 
+      icon: <Zap size={22} />, 
+      title: "Performance", 
+      desc: "Tuning for 60fps animations, lazy loading & optimal Core Web Vitals.",
+      color: "amber",
+      bg: "bg-amber-500/10", text: "text-amber-400", border: "border-amber-500/20", glow: "rgba(245,158,11,0.3)"
+    },
   ];
 
   const stats = [
-    { label: "Years Experience", value: 2, suffix: "+" },
-    { label: "Projects Built", value: 15, suffix: "+" },
-    { label: "Code Commits", value: 500, suffix: "+" }
+    { label: "Years Experience", value: 2, suffix: "+", desc: "Professional dev" },
+    { label: "Projects Built", value: 15, suffix: "+", desc: "React apps shipped" },
+    { label: "Code Commits", value: 500, suffix: "+", desc: "GitHub contributions" },
+    { label: "Technologies Used", value: 10, suffix: "+", desc: "Tools & frameworks" },
   ];
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden" ref={ref}>
+    <section id="about" className="py-24 section-divider relative overflow-hidden" ref={ref}>
+      
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
-        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="mb-16 md:flex justify-between items-end"
+        className="mb-16"
       >
-        <div className="max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-poppins text-slate-100 tracking-tight">
-            Crafting scalable <br className="hidden md:block"/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">digital experiences</span>
-          </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mb-8 shadow-[0_0_15px_rgba(34,211,238,0.5)]"></div>
-          <p className="text-slate-400 text-lg md:text-xl leading-relaxed font-inter font-light">
-            I'm a passionate Frontend Developer turning complex problems into beautiful, intuitive interfaces. 
-            With a strong foundation in modern JavaScript and React.js, I thrive on delivering highly animated, performance-driven web applications.
-          </p>
-        </div>
-
-        <div className="mt-12 md:mt-0 flex gap-8">
-          {stats.map((stat, idx) => (
-            <div key={idx} className="flex flex-col">
-              <span className="text-4xl font-bold text-slate-100 font-poppins">
-                {inView ? <CountUp end={stat.value} duration={2.5} /> : '0'}
-                <span className="text-cyan-400">{stat.suffix}</span>
-              </span>
-              <span className="text-sm tracking-wider text-slate-500 uppercase mt-2 font-medium">{stat.label}</span>
-            </div>
-          ))}
-        </div>
+        <span className="text-blue-400 font-semibold tracking-widest uppercase text-xs mb-3 block font-mono">Who I Am</span>
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 font-poppins text-slate-100 tracking-tight">
+          Crafting scalable{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+            digital experiences
+          </span>
+        </h2>
+        <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mb-8" style={{ boxShadow: '0 0 20px rgba(34,211,238,0.5)' }} />
+        <p className="text-slate-400 text-lg leading-relaxed max-w-2xl font-light">
+          I'm a passionate <span className="text-slate-200 font-medium">Frontend Developer</span> turning complex problems into beautiful, intuitive interfaces. 
+          With a strong foundation in modern JavaScript and React.js, I thrive on delivering 
+          highly animated, performance-driven web applications.
+        </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+      {/* Stats Row */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16"
+      >
+        {stats.map((stat, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 + idx * 0.1, type: "spring" }}
+            className="glass-card rounded-2xl p-5 text-center group hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
+          >
+            <div className="text-3xl font-black text-slate-100 font-poppins mb-1">
+              {inView ? (
+                <CountUp end={stat.value} duration={2.5} />
+              ) : '0'}
+              <span className="text-cyan-400">{stat.suffix}</span>
+            </div>
+            <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider font-mono">{stat.label}</div>
+            <div className="text-xs text-slate-600 mt-1 font-mono">{stat.desc}</div>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Highlight Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 relative z-10">
         {highlights.map((item, index) => (
           <Tilt 
             key={index}
             tiltMaxAngleX={10} 
             tiltMaxAngleY={10} 
             perspective={1000} 
-            transitionSpeed={1000} 
+            transitionSpeed={1200} 
             scale={1.02}
             className="h-full"
           >
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="glass-card p-8 flex flex-col items-start h-full group cursor-pointer relative overflow-hidden"
+              initial={{ opacity: 0, y: 40 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.4 + index * 0.12 }}
+              className="glass-card card-shine p-7 flex flex-col items-start h-full group cursor-default relative overflow-hidden hover:border-white/20 transition-all duration-500"
             >
-              {/* Hover gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-cyan-400/0 group-hover:from-blue-500/10 group-hover:to-cyan-400/10 transition-colors duration-500" />
+              {/* Hover glow */}
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ background: `radial-gradient(circle at 50% 0%, ${item.glow.replace('0.3', '0.08')}, transparent 70%)` }}
+              />
               
-              <div className="w-14 h-14 rounded-xl bg-[#0a0f1c]/80 border border-white/5 text-cyan-400 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all duration-500 relative z-10">
+              {/* Icon */}
+              <div 
+                className={`w-12 h-12 rounded-xl ${item.bg} border ${item.border} ${item.text} flex items-center justify-center mb-5 group-hover:scale-110 transition-all duration-500 relative z-10`}
+                style={{ boxShadow: `0 0 0 0 ${item.glow}` }}
+              >
                 {item.icon}
               </div>
-              <h3 className="text-xl font-semibold text-slate-200 mb-3 font-poppins relative z-10">{item.title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed font-inter relative z-10">{item.desc}</p>
               
-              <div className="mt-auto pt-6 w-full flex justify-end opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-300">
-                <ArrowUpRight size={20} className="text-cyan-400" />
+              <h3 className="text-base font-bold text-slate-200 mb-2 font-poppins relative z-10">{item.title}</h3>
+              <p className="text-slate-500 text-sm leading-relaxed font-light relative z-10 flex-1">{item.desc}</p>
+              
+              {/* Arrow - slides in on hover */}
+              <div className="mt-5 flex justify-end w-full opacity-0 group-hover:opacity-100 translate-x-3 group-hover:translate-x-0 transition-all duration-400 relative z-10">
+                <div className={`w-7 h-7 rounded-lg ${item.bg} ${item.text} flex items-center justify-center`}>
+                  <ArrowUpRight size={14} />
+                </div>
               </div>
             </motion.div>
           </Tilt>
