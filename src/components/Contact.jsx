@@ -1,25 +1,43 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Linkedin, Github, Send, Sparkles } from 'lucide-react';
+import { Mail, Linkedin, Github, Send, Sparkles, AlertCircle } from 'lucide-react';
+import axios from 'axios';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
-  
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error'
+  const [errorMessage, setErrorMessage] = useState('');
+
   // Custom Ripple state
   const [ripple, setRipple] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitStatus(null);
+    setErrorMessage('');
+
+    try {
+      await axios.post(`${API_URL}/api/contact`, formData, {
+        headers: { 'Content-Type': 'application/json' },
+        timeout: 10000,
+      });
+
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
-      setTimeout(() => setSubmitStatus(null), 4000);
-    }, 1500);
+    } catch (err) {
+      setSubmitStatus('error');
+      setErrorMessage(
+        err.response?.data?.message ||
+          'Failed to send message. Please try again or email me directly.'
+      );
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus(null), 5000);
+    }
   };
 
   const handleButtonRipple = (e) => {
@@ -186,7 +204,18 @@ const Contact = () => {
                   className="w-full bg-green-500/10 border border-green-500/30 text-green-400 py-4 px-6 rounded-xl flex items-center justify-center gap-3 mt-4"
                 >
                   <Sparkles size={18} />
-                  <span className="font-medium">Message launched successfully!</span>
+                  <span className="font-medium">Message launched successfully! I'll be in touch soon. 🚀</span>
+                </motion.div>
+              )}
+              {submitStatus === 'error' && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }} 
+                  animate={{ opacity: 1, y: 0, scale: 1 }} 
+                  exit={{ opacity: 0, y: -10 }}
+                  className="w-full bg-red-500/10 border border-red-500/30 text-red-400 py-4 px-6 rounded-xl flex items-center justify-center gap-3 mt-4"
+                >
+                  <AlertCircle size={18} />
+                  <span className="font-medium">{errorMessage}</span>
                 </motion.div>
               )}
             </AnimatePresence>

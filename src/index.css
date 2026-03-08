@@ -8,10 +8,17 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply text-slate-100 antialiased overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-100;
     font-family: 'Poppins', system-ui, sans-serif;
     background-color: #070c18;
+    /* Allow browser to handle vertical scroll on its own compositor thread */
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
   }
   
   * {
@@ -25,8 +32,10 @@
   }
 
   .glass-card {
-    @apply bg-slate-900/40 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300;
+    @apply bg-slate-900/40 backdrop-blur-md border border-white/10 hover:border-white/20 transition-all duration-300;
     box-shadow: 0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05);
+    /* Promote each glass card to its own compositor layer */
+    transform: translateZ(0);
   }
   
   .glass-card:hover {
@@ -34,7 +43,9 @@
   }
 
   .glass-nav {
-    @apply bg-[#070c18]/70 backdrop-blur-xl border-b border-white/5;
+    @apply bg-[#070c18]/80 backdrop-blur-md border-b border-white/5;
+    transform: translateZ(0);
+    will-change: transform;
   }
 
   .neon-glow {
@@ -142,24 +153,26 @@
   animation: gradient-flow 4s ease infinite;
 }
 
-/* Floating animation */
+/* Floating animation — GPU-only properties */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+  0%, 100% { transform: translateY(0px) translateZ(0); }
+  50%       { transform: translateY(-12px) translateZ(0); }
 }
 
 .animate-float {
-  animation: float 3s ease-in-out infinite;
+  animation: float 4s ease-in-out infinite;
+  will-change: transform;
 }
 
 /* Pulse ring animation */
 @keyframes pulseRing {
-  0% { transform: scale(0.8); opacity: 0.8; }
-  100% { transform: scale(2.5); opacity: 0; }
+  0%   { transform: scale(0.8) translateZ(0); opacity: 0.8; }
+  100% { transform: scale(2.5) translateZ(0); opacity: 0; }
 }
 
 .pulse-ring {
-  animation: pulseRing 2s ease-out infinite;
+  animation: pulseRing 2.5s ease-out infinite;
+  will-change: transform, opacity;
 }
 
 /* Timeline pulse dot */
@@ -220,16 +233,23 @@
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* Spin slow */
+/* Spin slow — GPU compositor only */
 @keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from { transform: rotate(0deg) translateZ(0); }
+  to   { transform: rotate(360deg) translateZ(0); }
 }
 
 .animate-spin-slow {
-  animation: spin-slow 12s linear infinite;
+  animation: spin-slow 14s linear infinite;
+  will-change: transform;
 }
 
 .animate-spin-slow-reverse {
-  animation: spin-slow 8s linear infinite reverse;
+  animation: spin-slow 10s linear infinite reverse;
+  will-change: transform;
+}
+
+/* Performance: section isolation */
+section {
+  contain: layout style;
 }

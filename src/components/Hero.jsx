@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Download, ArrowRight, Github, Linkedin, Mail, Code2, Cpu, Database, Layers } from 'lucide-react';
 import { Link } from 'react-scroll';
 import { TypeAnimation } from 'react-type-animation';
@@ -7,9 +7,6 @@ import { gsap } from 'gsap';
 
 const Hero = () => {
   const heroRef = useRef(null);
-  
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
   
   useEffect(() => {
     const elements = document.querySelectorAll('.floating-icon');
@@ -43,12 +40,11 @@ const Hero = () => {
   return (
     <section id="hero" ref={heroRef} className="relative min-h-[95vh] flex flex-col md:flex-row items-center justify-between pt-20 pb-10 overflow-visible px-4">
       
-      {/* Subtle radial spotlight under the logo area */}
-      <motion.div style={{ y }} className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-500/8 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-400/8 rounded-full blur-[120px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-purple-500/5 rounded-full blur-[100px]" />
-      </motion.div>
+      {/* Static ambient glows — no scroll listener needed */}
+      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-blue-500/6 rounded-full" style={{ filter: 'blur(80px)' }} />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-cyan-400/6 rounded-full" style={{ filter: 'blur(80px)' }} />
+      </div>
 
       {/* LEFT: Text Content */}
       <motion.div 
@@ -190,12 +186,11 @@ const Hero = () => {
           {/* Avatar image */}
           <div className="absolute inset-0 rounded-full overflow-hidden p-1">
             <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-tr from-blue-900/40 to-purple-900/40">
-              <motion.img 
+              <img
                 src="/anime_boy_dev.png"
                 alt="Jatin Kumar - Frontend Developer"
-                className="w-full h-full object-cover object-top"
-                animate={{ y: [-8, 8, -8] }}
-                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                className="w-full h-full object-cover object-top animate-float"
+                style={{ willChange: 'transform' }}
               />
             </div>
           </div>
