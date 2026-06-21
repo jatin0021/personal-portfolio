@@ -13,14 +13,15 @@
   }
 
   body {
-    @apply text-slate-100 antialiased overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-100;
-    font-family: 'Poppins', system-ui, sans-serif;
-    background-color: #070c18;
-    /* Allow browser to handle vertical scroll on its own compositor thread */
+    @apply antialiased overflow-x-hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
     touch-action: pan-y;
     -webkit-overflow-scrolling: touch;
+    selection-color: #3b82f6;
   }
-  
+
   * {
     box-sizing: border-box;
   }
@@ -28,228 +29,68 @@
 
 @layer utilities {
   .gradient-text {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400;
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600;
   }
 
   .glass-card {
-    @apply bg-slate-900/40 backdrop-blur-md border border-white/10 hover:border-white/20 transition-all duration-300;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05);
-    /* Promote each glass card to its own compositor layer */
-    transform: translateZ(0);
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
   }
-  
+
   .glass-card:hover {
-    box-shadow: 0 8px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08);
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 8px 32px rgba(0,0,0,0.06);
   }
 
   .glass-nav {
-    @apply bg-[#070c18]/80 backdrop-blur-md border-b border-white/5;
-    transform: translateZ(0);
-    will-change: transform;
+    background: rgba(248,250,252,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #e2e8f0;
   }
 
-  .neon-glow {
-    box-shadow: 0 0 15px rgba(59,130,246,0.5), 0 0 30px rgba(168,85,247,0.3);
-  }
-
-  .neon-glow-cyan {
-    box-shadow: 0 0 20px rgba(34,211,238,0.4), 0 0 40px rgba(34,211,238,0.2);
-  }
-  
-  .neon-glow-blue {
-    box-shadow: 0 0 20px rgba(59,130,246,0.5), 0 0 40px rgba(59,130,246,0.2);
-  }
-
-  .magnetic-btn {
-    @apply relative overflow-hidden transition-all duration-300;
-  }
-  
   .section-divider {
-    @apply border-t border-white/5;
+    border-top: 1px solid #e2e8f0;
     position: relative;
   }
-  
+
   .section-divider::before {
     content: '';
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 200px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(34,211,238,0.5), rgba(59,130,246,0.5), transparent);
+    width: 160px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #3b82f6, transparent);
   }
-  
+
   .skill-badge {
-    @apply relative flex items-center justify-center rounded-xl font-semibold text-sm tracking-wide transition-all duration-300 cursor-default;
+    @apply relative flex items-center justify-center rounded-lg font-semibold text-sm tracking-wide cursor-default;
   }
-  
-  .text-glow-cyan {
-    text-shadow: 0 0 20px rgba(34,211,238,0.6);
-  }
-  
-  .text-glow-blue {
-    text-shadow: 0 0 20px rgba(59,130,246,0.6);
-  }
-  
-  .card-shine {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .card-shine::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
-    transition: left 0.7s ease;
-    z-index: 1;
-  }
-  
-  .card-shine:hover::before {
-    left: 150%;
+
+  .magnetic-btn {
+    @apply relative overflow-hidden;
   }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #070c18;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(59,130,246,0.5), rgba(168,85,247,0.5));
+  background: #cbd5e1;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(59,130,246,0.8), rgba(168,85,247,0.8));
+  background: #94a3b8;
 }
 
-/* Page Transition Overlay */
-.page-transition {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #070c18;
-  z-index: 9999;
-  pointer-events: none;
-}
-
-/* Gradient text animation */
-@keyframes gradient-flow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient-flow 4s ease infinite;
-}
-
-/* Floating animation — GPU-only properties */
-@keyframes float {
-  0%, 100% { transform: translateY(0px) translateZ(0); }
-  50%       { transform: translateY(-12px) translateZ(0); }
-}
-
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-  will-change: transform;
-}
-
-/* Pulse ring animation */
-@keyframes pulseRing {
-  0%   { transform: scale(0.8) translateZ(0); opacity: 0.8; }
-  100% { transform: scale(2.5) translateZ(0); opacity: 0; }
-}
-
-.pulse-ring {
-  animation: pulseRing 2.5s ease-out infinite;
-  will-change: transform, opacity;
-}
-
-/* Timeline pulse dot */
-@keyframes timelinePulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(34,211,238,0.7); }
-  50% { box-shadow: 0 0 0 12px rgba(34,211,238,0); }
-}
-
-.timeline-dot {
-  animation: timelinePulse 2s ease-in-out infinite;
-}
-
-/* Shimmer effect for skill bars */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.shimmer-bar {
-  background: linear-gradient(90deg, 
-    rgba(59,130,246,1) 0%,
-    rgba(34,211,238,1) 40%,
-    rgba(255,255,255,0.8) 50%,
-    rgba(34,211,238,1) 60%,
-    rgba(59,130,246,1) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 3s linear infinite;
-}
-
-/* Noise texture overlay */
-.noise-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: -9;
-  opacity: 0.02;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-  pointer-events: none;
-}
-
-/* Button hover ripple */
-@keyframes ripple-out {
-  0% { transform: scale(0); opacity: 1; }
-  100% { transform: scale(4); opacity: 0; }
-}
-
-/* Orbit animation */
-@keyframes orbit {
-  0% { transform: rotate(0deg) translateX(120px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
-}
-
-/* Counter number pop */
-@keyframes countPop {
-  0% { transform: scale(0.5); opacity: 0; }
-  70% { transform: scale(1.1); }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-/* Spin slow — GPU compositor only */
-@keyframes spin-slow {
-  from { transform: rotate(0deg) translateZ(0); }
-  to   { transform: rotate(360deg) translateZ(0); }
-}
-
-.animate-spin-slow {
-  animation: spin-slow 14s linear infinite;
-  will-change: transform;
-}
-
-.animate-spin-slow-reverse {
-  animation: spin-slow 10s linear infinite reverse;
-  will-change: transform;
-}
-
-/* Performance: section isolation */
+/* Section performance */
 section {
   contain: layout style;
 }
