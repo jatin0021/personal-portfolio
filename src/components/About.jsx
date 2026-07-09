@@ -47,9 +47,9 @@ const About = () => {
   ];
 
   const stats = [
-    { label: "Years Experience", value: 2, suffix: "+", desc: "Professional dev" },
+    { label: "Years Experience", value: 1, suffix: "+", desc: "Professional dev" },
     { label: "Projects Built", value: 15, suffix: "+", desc: "React apps shipped" },
-    { label: "Code Commits", value: 500, suffix: "+", desc: "GitHub contributions" },
+    { label: "Code Commits", value: 300, suffix: "+", desc: "GitHub contributions" },
     { label: "Technologies", value: 10, suffix: "+", desc: "Tools & frameworks" },
   ];
 
@@ -71,9 +71,7 @@ const About = () => {
         </h2>
         <div className="w-16 h-1 bg-blue-600 rounded-full mb-7" />
         <p className="text-slate-500 text-lg leading-relaxed max-w-2xl font-light">
-          I'm a passionate <span className="text-slate-800 font-medium">Frontend Developer</span> turning complex problems into beautiful,
-          intuitive interfaces. With a strong foundation in modern JavaScript and React.js, I thrive on delivering
-          high-performance web applications.
+          I'm a passionate <span className="text-slate-800 font-medium">Frontend Developer</span> with experience in building responsive and scalable web applications using <span className="text-blue-600 font-medium">React.js, Tailwind CSS, JavaScript, WordPress, and Shopify</span>. I specialize in API integration, component-based architecture, and performance optimization to deliver production-ready frontend applications.
         </p>
       </motion.div>
 

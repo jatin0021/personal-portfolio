@@ -5,8 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:all": "concurrently \"npm run dev\" \"npm run server\" --names \"vite,server\" --prefix-colors \"cyan,green\"",
-    "server": "cd server && node index.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

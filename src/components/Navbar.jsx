@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { Menu, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 const navItems = [
   { name: 'About', to: 'about' },
@@ -60,7 +60,7 @@ const Navbar = () => {
           ))}
 
           <a
-            href="/resume.pdf"
+            href="/public/Jatin_Resume.pdf"
             download
             className="border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-5 py-2 rounded-lg text-sm font-semibold tracking-wide ml-2"
           >

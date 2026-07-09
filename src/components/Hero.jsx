@@ -55,9 +55,7 @@ const Hero = () => {
         </h2>
 
         <p className="text-slate-500 text-base md:text-lg leading-relaxed max-w-lg font-light">
-          I build <span className="text-slate-800 font-medium">scalable, high-performance</span> web apps with clean,
-          modern interfaces and seamless API integrations — turning complex logic into{' '}
-          <span className="text-blue-600 font-medium">great user experiences</span>.
+          I build <span className="text-slate-800 font-medium">responsive, high-performance</span> web applications using React.js, Tailwind CSS, WordPress, and Shopify — turning complex designs and data into <span className="text-blue-600 font-medium">seamless user experiences</span>.
         </p>
 
         {/* CTA Buttons */}
@@ -70,7 +68,7 @@ const Hero = () => {
           </Link>
 
           <a
-            href="/resume.pdf"
+            href="/public/Jatin_Resume.pdf"
             download
             className="group px-8 py-3 border border-slate-300 bg-white hover:border-blue-400 text-slate-700 font-semibold rounded-xl flex items-center gap-3"
           >

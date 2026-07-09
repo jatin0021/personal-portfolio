@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, ArrowRight, Star } from 'lucide-react';
 
@@ -57,15 +57,15 @@ const projectsData = [
   },
   {
     num: "05",
-    title: "Delta Exchange UI",
-    subtitle: "Crypto Trading Platform",
-    tech: ["React.js", "JavaScript", "Tailwind CSS", "Vite"],
-    desc: "A pixel-perfect UI clone of the Delta Exchange crypto derivatives platform. Features real-time trading views, order book displays, candlestick chart layouts, and a professional dark-themed trading terminal experience.",
+    title: "Web Trading Platform",
+    subtitle: "Trading Terminal",
+    tech: ["React.js", "Tailwind CSS", "Vite", "Vercel"],
+    desc: "Built a real-time trading platform frontend with live charts, order management, positions, and account dashboards. Developed responsive and dark-themed UI components for an optimized user experience across devices.",
     github: "https://github.com/jatin0021/delta-exchange",
     live: "#",
     accent: "amber",
-    tags: ["Trading", "Crypto", "Dark Theme"],
-    featured: false,
+    tags: ["Trading Platform", "Live Charts", "Dark Theme"],
+    featured: true,
     svgIndex: 5,
   },
   {
@@ -93,6 +93,19 @@ const projectsData = [
     tags: ["Animations", "Portfolio", "MongoDB"],
     featured: false,
     svgIndex: 2,
+  },
+  {
+    num: "08",
+    title: "Sheshine Company Website",
+    subtitle: "WordPress Developer Project",
+    tech: ["WordPress", "Elementor", "Custom CSS", "Plugin Integration"],
+    desc: "Developed a responsive company website collaboratively for an in-house organizational project. Built and customized pages focused on empowering girls through SEO, social media integration, and educational content design.",
+    github: "#",
+    live: "#",
+    accent: "blue",
+    tags: ["WordPress", "Elementor", "SEO", "Responsive"],
+    featured: false,
+    svgIndex: 7,
   }
 ];
 
@@ -271,6 +284,27 @@ const Projects = () => {
                       <rect x="94" y="145" width="8" height="21" rx="2" fill={c.svgFill} fillOpacity="0.3" stroke="none" />
                       <rect x="106" y="135" width="8" height="31" rx="2" fill={c.svgFill} fillOpacity="0.5" stroke="none" />
                       <rect x="118" y="142" width="8" height="24" rx="2" fill={c.svgFill} fillOpacity="0.35" stroke="none" />
+                    </>
+                  )}
+                  {project.svgIndex === 7 && (
+                    <>
+                      {/* Web Layout / Elementor grid and Heart overlay representing Sheshine */}
+                      <rect x="20" y="20" width="160" height="160" rx="18" fill={c.svgFill} fillOpacity="0.06" />
+                      {/* Browser Header */}
+                      <rect x="35" y="40" width="130" height="12" rx="4" fill={c.svgFill} fillOpacity="0.15" stroke="none" />
+                      <circle cx="45" cy="46" r="2" fill={c.svgFill} fillOpacity="0.5" stroke="none" />
+                      <circle cx="52" cy="46" r="2" fill={c.svgFill} fillOpacity="0.5" stroke="none" />
+                      <circle cx="59" cy="46" r="2" fill={c.svgFill} fillOpacity="0.5" stroke="none" />
+                      {/* Layout blocks */}
+                      <rect x="35" y="60" width="40" height="40" rx="6" fill={c.svgFill} fillOpacity="0.1" strokeOpacity="0.5" />
+                      <rect x="85" y="60" width="80" height="15" rx="4" fill={c.svgFill} fillOpacity="0.1" stroke="none" />
+                      <rect x="85" y="80" width="80" height="8" rx="3" fill={c.svgFill} fillOpacity="0.06" stroke="none" />
+                      <rect x="85" y="92" width="50" height="8" rx="3" fill={c.svgFill} fillOpacity="0.06" stroke="none" />
+                      {/* Lower blocks */}
+                      <rect x="35" y="110" width="60" height="40" rx="6" fill={c.svgFill} fillOpacity="0.08" stroke="none" />
+                      <rect x="105" y="110" width="60" height="40" rx="6" fill={c.svgFill} fillOpacity="0.08" stroke="none" />
+                      {/* Heart icon representing Sheshine */}
+                      <path d="M12 21.35 l-1.45-1.32 C5.4 15.36 2 12.28 2 8.5 C2 5.42 4.42 3 7.5 3 c1.74 0 3.41 .81 4.5 2.09 C13.09 3.81 14.76 3 16.5 3 C19.58 3 22 5.42 22 8.5 c0 3.78-3.4 6.86-8.55 11.54 L12 21.35 z" transform="translate(130, 125) scale(0.9)" fill="#ef4444" fillOpacity="0.18" stroke="#ef4444" strokeOpacity="0.7" strokeWidth="1" />
                     </>
                   )}
                 </svg>

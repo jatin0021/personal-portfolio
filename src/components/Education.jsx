@@ -16,7 +16,7 @@ const Education = () => {
     {
       degree: "Bachelor of Science",
       short: "B.Sc",
-      inst: "MJPRU Bareilly",
+      inst: "Mahatma Jyotiba Phule Rohilkhand University, Bareilly",
       period: "2020 – 2023",
       accent: "indigo",
       icon: <BookOpen size={26} />,

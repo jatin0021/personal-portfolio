@@ -4,18 +4,30 @@ import { Briefcase, MapPin, Calendar, CheckCircle2 } from 'lucide-react';
 
 const experiences = [
   {
-    title: "Frontend Developer",
+    title: "Frontend Developer (React.js)",
     company: "AAYAAMX Technologies Pvt Ltd",
-    location: "Noida, India",
-    period: "Jan 2025 – Present",
-    current: true,
+    location: "Ahmedabad, India",
+    period: "Nov 2025 – Feb 2026",
+    current: false,
     achievements: [
-      { bold: "Reusable Component Library", text: "Built a scalable component system standardizing UI development, reducing feature build time by 40%." },
-      { bold: "Scalable UI Architecture", text: "Architected React.js application structure using best practices and modern state management flows." },
-      { bold: "Cross-browser Compatibility", text: "Delivered pixel-perfect designs across all browsers using mobile-first Tailwind CSS methodology." },
-      { bold: "Performance Optimization", text: "Drove significant improvements through code splitting, lazy loading, and rigorous profiling." },
+      { bold: "Responsive Interfaces", text: "Developed responsive and scalable frontend interfaces using React.js, Tailwind CSS, HTML5, and CSS3." },
+      { bold: "Reusable Components", text: "Created reusable UI components and improved website performance and usability." },
+      { bold: "Collaboration", text: "Collaborated with design and backend teams to deliver production-ready web solutions." },
     ],
-    techUsed: ["React.js", "Tailwind CSS", "Vite", "Axios", "Git"],
+    techUsed: ["React.js", "Tailwind CSS", "HTML5", "CSS3", "Git"],
+  },
+  {
+    title: "Web Developer",
+    company: "Zenauf Tech Pvt. Ltd.",
+    location: "Mohali",
+    period: "May 2025 – Nov 2025",
+    current: false,
+    achievements: [
+      { bold: "Client & In-house Projects", text: "Worked on live client and in-house WordPress projects, focusing on website development and customization." },
+      { bold: "WordPress Customization", text: "Built responsive and user-friendly websites through theme customization, plugin integration, and performance optimization." },
+      { bold: "Deployment & SEO", text: "Assisted in deployment, SEO implementation, and cross-browser compatibility improvements." },
+    ],
+    techUsed: ["WordPress", "Shopify", "Elementor", "Custom CSS", "SEO"],
   }
 ];
 

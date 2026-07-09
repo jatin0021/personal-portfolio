@@ -4,13 +4,15 @@ import { Mail, Linkedin, Github, Send, AlertCircle, CheckCircle } from 'lucide-r
 import axios from 'axios';
 
 /**
- * Contact form — saves to MongoDB Atlas via:
- *   • Local dev : Vite proxy forwards /api → http://localhost:5000/api
- *   • Production: Vercel Serverless Function at /api/contact.js
+ * Contact form — delivers submissions directly to your email using Web3Forms.
+ * Completely free, no database needed, and works natively on Vercel.
  *
- * No environment variable needed — relative path works everywhere.
+ * To set up:
+ *   1. Get a free Access Key from: https://web3forms.com/ (takes 10 seconds)
+ *   2. Add it to your Vercel/local env as: VITE_WEB3FORMS_KEY=your_key_here
  */
-const CONTACT_API = '/api/contact';
+const WEB3FORMS_API = 'https://api.web3forms.com/submit';
+const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || '';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -24,10 +26,23 @@ const Contact = () => {
     setSubmitStatus(null);
     setErrorMessage('');
 
+    if (!ACCESS_KEY) {
+      setSubmitStatus('error');
+      setErrorMessage('Web3Forms Access Key is missing. Please add VITE_WEB3FORMS_KEY to your environment variables.');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const response = await axios.post(
-        CONTACT_API,
-        formData,
+        WEB3FORMS_API,
+        {
+          access_key: ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: 'New Contact Form Submission - Portfolio',
+        },
         { headers: { 'Content-Type': 'application/json' } }
       );
 
@@ -35,7 +50,7 @@ const Contact = () => {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' });
       } else {
-        throw new Error(response.data.message || 'Unexpected response from server.');
+        throw new Error(response.data.message || 'Unexpected response from Web3Forms.');
       }
     } catch (err) {
       setSubmitStatus('error');
@@ -149,7 +164,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className={inputClass}
-                  placeholder="John Doe"
+                  placeholder="enter your name"
                 />
               </div>
               <div>
@@ -164,7 +179,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className={inputClass}
-                  placeholder="john@example.com"
+                  placeholder="enter your email"
                 />
               </div>
             </div>
@@ -181,7 +196,7 @@ const Contact = () => {
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 className={`${inputClass} resize-none leading-relaxed`}
-                placeholder="I'd like to discuss a project..."
+                placeholder="enter your message"
               />
             </div>
 

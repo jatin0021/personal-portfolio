@@ -23,7 +23,7 @@ const skillsData = [
     items: [
       { name: "REST API", level: 75 },
       { name: "Axios", level: 72 },
-      { name: "JSON", level: 80 }
+      { name: "JSON/XML", level: 80 }
     ]
   },
   {
@@ -39,13 +39,15 @@ const skillsData = [
     ]
   },
   {
-    category: "Backend Basics",
+    category: "CMS & Web Dev",
     icon: "🖥️",
-    percentage: 45,
+    percentage: 65,
     color: "emerald",
     items: [
-      { name: "Node.js", level: 45 },
-      { name: "Express.js", level: 40 }
+      { name: "WordPress", level: 80 },
+      { name: "Shopify", level: 40 },
+      { name: "Theme Customization", level: 75 },
+      { name: "Plugin Integration", level: 72 }
     ]
   },
 ];
@@ -119,7 +121,8 @@ const techBadges = [
   { name: "JavaScript",  bg: "bg-yellow-50",  text: "text-yellow-700",  border: "border-yellow-200" },
   { name: "Vite",        bg: "bg-purple-50",  text: "text-purple-700",  border: "border-purple-200" },
   { name: "Git",         bg: "bg-orange-50",  text: "text-orange-700",  border: "border-orange-200" },
-  { name: "Node.js",     bg: "bg-green-50",   text: "text-green-700",   border: "border-green-200" },
+  { name: "WordPress",   bg: "bg-blue-50",    text: "text-blue-700",    border: "border-blue-200" },
+  { name: "Shopify",     bg: "bg-green-50",   text: "text-green-700",   border: "border-green-200" },
   { name: "REST API",    bg: "bg-blue-50",    text: "text-blue-700",    border: "border-blue-200" },
   { name: "Axios",       bg: "bg-indigo-50",  text: "text-indigo-700",  border: "border-indigo-200" },
   { name: "Vercel",      bg: "bg-slate-50",   text: "text-slate-700",   border: "border-slate-200" },
