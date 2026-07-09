@@ -12,7 +12,7 @@ import axios from 'axios';
  *   2. Add it to your Vercel/local env as: VITE_WEB3FORMS_KEY=your_key_here
  */
 const WEB3FORMS_API = 'https://api.web3forms.com/submit';
-const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || '';
+const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || 'b77d4367-3705-4f1a-b7a8-45e89adee8ef';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
