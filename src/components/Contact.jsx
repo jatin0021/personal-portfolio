@@ -230,7 +230,7 @@ const Contact = () => {
                   className="flex items-center gap-3 bg-emerald-50 border border-emerald-200 text-emerald-700 py-3 px-5 rounded-xl text-sm font-medium"
                 >
                   <CheckCircle size={17} />
-                  Message received! I'll get back to you soon. 🎉
+                  Message received! I'll get back to you soon.
                 </motion.div>
               )}
               {submitStatus === 'error' && (

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, ArrowRight, Star } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, Star, ChevronDown, ChevronUp } from 'lucide-react';
+
 
 const projectsData = [
   {
@@ -121,6 +122,9 @@ const accentMap = {
 
 
 const Projects = () => {
+  const [showAll, setShowAll] = useState(false);
+  const displayedProjects = showAll ? projectsData : projectsData.slice(0, 3);
+
   return (
     <section id="projects" className="py-24 section-divider relative z-10 w-full overflow-hidden">
       <motion.div
@@ -139,7 +143,7 @@ const Projects = () => {
 
       {/* 3-column grid with generous gap */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-10 w-full">
-        {projectsData.map((project, index) => {
+        {displayedProjects.map((project, index) => {
           const c = accentMap[project.accent];
           return (
             <motion.div
@@ -366,6 +370,31 @@ const Projects = () => {
           );
         })}
       </div>
+
+      {projectsData.length > 3 && (
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex justify-center mt-14"
+        >
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="flex items-center gap-2 px-6 py-3 bg-white hover:bg-slate-50 text-slate-800 hover:text-blue-600 font-semibold rounded-xl border border-slate-200 hover:border-blue-300 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer"
+          >
+            {showAll ? (
+              <>
+                Show Less <ChevronUp size={16} />
+              </>
+            ) : (
+              <>
+                Show More <ChevronDown size={16} />
+              </>
+            )}
+          </button>
+        </motion.div>
+      )}
     </section>
   );
 };

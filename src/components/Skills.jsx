@@ -6,10 +6,10 @@ const skillsData = [
   {
     category: "Frontend Core",
     icon: "⚛️",
-    percentage: 78,
+    percentage: 75,
     color: "blue",
     items: [
-      { name: "React.js", level: 78 },
+      { name: "React.js", level: 70 },
       { name: "HTML5", level: 82 },
       { name: "CSS3", level: 75 },
       { name: "Tailwind CSS", level: 76 }
